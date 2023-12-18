@@ -37,3 +37,8 @@ export const ReviewSchema = z.object({
   rating: z.number(),
   review: z.string(),
 });
+
+export const UserSchema = z.object({
+  username: z.string().min(1).max(255),
+  password: z.string().min(1),
+});
