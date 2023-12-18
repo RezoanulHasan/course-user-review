@@ -44,7 +44,7 @@ export const createCourse = async (
   }
 };
 
-//..................get-  all  courses................
+//..................get all  courses................
 
 export const getCourses = async (
   req: Request,
@@ -131,7 +131,7 @@ export const getCourseById = async (
   }
 };
 
-// ..............delete Course.................
+// ..............delete Course  by ID.................
 
 export const deleteCourse = async (
   req: Request,
@@ -156,7 +156,6 @@ export const deleteCourse = async (
 };
 
 // ..............updateCourse.................
-// Import necessary modules and models
 
 export const updateCourse = async (
   req: Request,
