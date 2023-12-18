@@ -44,7 +44,7 @@ export const createCourse = async (
   }
 };
 
-//..................get-courses................
+//..................get-  all  courses................
 
 export const getCourses = async (
   req: Request,
@@ -106,6 +106,51 @@ export const getCourses = async (
 
     res.status(200).json(response);
   } catch (error) {
+    next(error);
+  }
+};
+
+// ..............get course  by ID.................
+
+export const getCourseById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const courseId = req.params.id;
+    const course = await CourseModel.findById(courseId);
+    if (!course) {
+      res.status(404).json({ message: 'Course not found' });
+    } else {
+      res.status(200).json(course);
+    }
+  } catch (error) {
+    // Pass the error to the error handling middleware
+    next(error);
+  }
+};
+
+// ..............delete Course.................
+
+export const deleteCourse = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const courseId = req.params.id;
+    const deletedCourse = await CourseModel.findByIdAndDelete(courseId);
+
+    if (!deletedCourse) {
+      res.status(404).json({ message: 'Course not found' });
+    } else {
+      res
+        .status(200)
+        .json({ message: 'Course deleted successfully', deletedCourse });
+    }
+  } catch (error) {
+    // Pass the error to the error handling middleware
     next(error);
   }
 };

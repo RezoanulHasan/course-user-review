@@ -6,8 +6,8 @@ const detailsSchema = z.object({
 });
 
 export const CourseSchema = z.object({
-  title: z.string(),
-  instructor: z.string(),
+  title: z.string().min(1).max(255),
+  instructor: z.string().min(1).max(255),
   categoryId: z.string(),
   price: z.number(),
   tags: z.array(
@@ -18,8 +18,12 @@ export const CourseSchema = z.object({
   ),
   startDate: z.string(),
   endDate: z.string(),
-  language: z.string(),
-  provider: z.string(),
+  language: z.string().min(1).max(255),
+  provider: z.string().min(1).max(255),
+  topics: z.array(z.string().min(1)),
+  classDays: z.array(z.string().min(1)),
+  classTime: z.string(),
+
   durationInWeeks: z.number().optional(),
   details: detailsSchema,
 });

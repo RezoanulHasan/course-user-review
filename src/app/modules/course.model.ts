@@ -12,6 +12,9 @@ export interface Course extends Document {
   language: string;
   provider: string;
   durationInWeeks?: number;
+  topics: string[];
+  classDays: string[];
+  classTime: string;
   details: {
     level: string;
     description: string;
@@ -37,6 +40,10 @@ const courseSchema = new Schema<Course>({
   endDate: { type: String, required: true },
   language: { type: String, required: true },
   provider: { type: String, required: true },
+  topics: { type: [String], required: true },
+  classDays: { type: [String], required: true },
+  classTime: { type: String, required: true },
+
   durationInWeeks: { type: Number },
   details: {
     level: {
