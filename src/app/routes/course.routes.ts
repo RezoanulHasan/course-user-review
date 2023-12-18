@@ -6,21 +6,22 @@ import {
   getBestCourse,
   getCourseById,
   deleteCourse,
+  isAdmin,
 } from '../controllers/coursesController';
 
 import { authenticateToken } from '../middlewares/authMiddleware';
 
 const router = express.Router();
 // Create courses
-router.post('/api/course', authenticateToken, createCourse);
+router.post('/api/course', authenticateToken, isAdmin, createCourse);
 // get all  courses
 router.get('/api/courses', authenticateToken, getCourses);
 // get single  courses  by id
 router.get('/api/course/:id', authenticateToken, getCourseById);
 // delete  courses  by id
-router.delete('/api/course/:id', authenticateToken, deleteCourse);
+router.delete('/api/course/:id', authenticateToken, isAdmin, deleteCourse);
 // update  courses  by id
-router.put('/api/course/:courseId', authenticateToken, updateCourse);
+router.put('/api/course/:courseId', authenticateToken, isAdmin, updateCourse);
 // get best course
-router.get('/api/course/best', getBestCourse);
+router.get('/api/course/best', authenticateToken, getBestCourse);
 export default router;
