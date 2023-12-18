@@ -20,11 +20,11 @@ export const login = async (
 
       // You can include additional user data in the token payload if needed
       const token = jwt.sign(
-        { username: user.username },
+        { username: user.username, role: user.role },
         config.SECRET_KEY as string,
       );
 
-      res.json({ token });
+      res.json({ token, role: user.role });
     } else {
       // User authentication failed
       res.status(401).json({ message: 'Invalid username or password' });

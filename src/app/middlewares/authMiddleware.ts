@@ -1,21 +1,40 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
+import config from '../config';
 
 export const authenticateToken = (
   req: Request,
   res: Response,
   next: NextFunction,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): void | Response<any, Record<string, any>> => {
+) => {
   const token = req.header('Authorization');
-  if (!token)
+
+  if (!token) {
     return res
       .status(401)
       .json({ message: 'Access denied. Token is missing.' });
+  }
 
-  jwt.verify(token, process.env.SECRET_KEY as string, (err, user) => {
-    if (err) return res.status(403).json({ message: 'Invalid token.' });
+  jwt.verify(token, config.SECRET_KEY as string, (err, decodedToken) => {
+    if (err) {
+      return res.status(403).json({ message: 'Invalid token.' });
+    }
+
+    const user = decodedToken as JwtPayload; // Assuming JwtPayload is the type of your decoded payload
+
+    // Now you have access to user data including the role
     req.body.user = user;
-    next();
+
+    // Check user's role and grant/deny access
+    const { role } = user;
+    if (role === 'admin') {
+      // User is an admin, allow access
+      next();
+    } else {
+      // User is not an admin, deny access
+      res
+        .status(403)
+        .json({ message: 'Access denied. Admin rights required.' });
+    }
   });
 };

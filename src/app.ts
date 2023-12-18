@@ -9,6 +9,7 @@ import errorHandler from './app/middlewares/errorHandler';
 import courseRoutes from './app/routes/course.routes';
 import categoryRoutes from './app/routes/category.routes';
 import reviewRoutes from './app/routes/review.routes';
+import authRoutes from './app/routes/authRoutes';
 
 const app: Application = express();
 
@@ -23,6 +24,9 @@ app.use(reviewRoutes);
 app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'sever is running' });
 });
+
+// Apply authentication routes
+app.use('/api/auth', authRoutes);
 
 // Golobal error handler
 
