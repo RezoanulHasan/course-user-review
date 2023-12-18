@@ -8,6 +8,7 @@
 - Express js
 - Mongoose
 - typescript
+- JWT
 - bcrypt (validation)
 - Zod (validation)
 - eslint ( code formatting and quality checking )
@@ -107,10 +108,10 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 
 
 
-## Requirements link:https://github.com/Apollo-Level2-Web-Dev/L2-B2-assignment-3
+
 ## Getting Started
  to set up and run  projects locally
  - Colen this repository  
  - npm install
  - npm run  build
- - npm run start: dev
+ - npm run start:dev
