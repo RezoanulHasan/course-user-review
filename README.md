@@ -8,6 +8,7 @@
 - Express js
 - Mongoose
 - typescript
+- JWT
 - bcrypt (validation)
 - Zod (validation)
 - eslint ( code formatting and quality checking )
