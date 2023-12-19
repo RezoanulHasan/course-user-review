@@ -60,10 +60,9 @@ Welcome to the Awesome API! This API provides various functionalities for managi
 
 
 
-
 ## Table of Contents for courses
 
-- [Endpoints](#endpoints)
+   - [Endpoints](#endpoints)
   - [Create a Course](#create-a-course)
   - [Get Paginated and Filtered Courses](#get-paginated-and-filtered-courses)
   - [Create a Category](#create-a-category)
