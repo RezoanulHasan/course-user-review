@@ -175,7 +175,7 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 
 - **Endpoint:** `/api/course/:courseId`
 - **Method:** `PUT`
-- - **Access:** `admin`
+- **Access:** `admin`
 - Updating Both Primitive and Non-Primitive Data
 
 
@@ -197,11 +197,15 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 - **Endpoint:** `/api/reviews`
 - **Method:** `POST`
 - **Request Body:** ( data formate like this)
-- 
+
+
 ```json
 {
-    "courseId": "65813a53180f68175c75ed65",
-    "rating": 4,
+
+     "userId": "658084a5c04a17a769b18e10",
+    "username":"Rezoanul hasan",
+    "courseId": "658046adc644094fc264c0d7",
+     "rating": 4,
     "review": "Great course!"
 }
 ```
@@ -226,5 +230,5 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
  to set up and run  projects locally
  - Colen this repository  
  - npm install
- - npm run  build
+ - npm run build
  - npm run start:dev
