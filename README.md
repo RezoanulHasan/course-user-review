@@ -28,7 +28,36 @@ Welcome to the Awesome API! This API provides various functionalities for managi
 
 ## Video link API and Server testing:  https://drive.google.com/file/d/1-VQG2VEjblih9zFWECU5i5Ud3Q8cwJFn/view?usp=sharing
 
-## Table of Contents
+
+## Table of Contents for  users
+
+- **Endpoint:** `/api/auth/register`
+- **Method:** `POST`
+- **Request Body:** data formate like this *
+
+  
+```json
+
+{
+  "username": "your_username",
+  "password": "your_password",
+  "email": "your_email@example.com",
+  "role": "user"/"admin"
+}
+```
+
+- **Endpoint:** `/api/auth/login`
+- **Method:** `POST`
+- **Request Body:** data formate like this *
+
+  
+```json
+{
+  "username": "your_username",
+  "password": "your_password"
+}
+```
+## Table of Contents for courses
 
 - [Endpoints](#endpoints)
   - [Create a Course](#create-a-course)
@@ -47,7 +76,8 @@ Welcome to the Awesome API! This API provides various functionalities for managi
 - **Endpoint:** `/api/course`
 - **Method:** `POST`
 - **Access:** `admin`
-- **Request Body:* data formate like this *
+- **Request Body:** data formate like this *
+-  "durationInWeeks": Calclute by Backend.  
   
 ```json
 {
@@ -99,7 +129,6 @@ Welcome to the Awesome API! This API provides various functionalities for managi
     }
 }
 
-   
 ```
 
 
@@ -107,7 +136,7 @@ Welcome to the Awesome API! This API provides various functionalities for managi
 
 - **Endpoint:** `/api/courses`
 - **Method:** `GET`
-- 
+  
 Query Parameters:
 - page: (?page=1) Specifies the page number for paginated results.
 - limit: (?limit=10) Sets the number of items per page.
@@ -128,6 +157,8 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 
 - **Endpoint:** `/api/categories`
 - **Method:** `POST`
+- - **Access:** `admin`
+
 - **Request Body:** (Provide details about the expected request body)
 
 ### Get All Categories
