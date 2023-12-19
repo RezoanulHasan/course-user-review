@@ -26,8 +26,6 @@
 
 Welcome to the Awesome API! This API provides various functionalities for managing courses, categories, and reviews.
 
-
-
 ## Table of Contents for  users
 
 - **Endpoint:** `/api/auth/register`
