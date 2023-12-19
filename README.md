@@ -41,7 +41,10 @@ Welcome to the Awesome API! This API provides various functionalities for managi
   "email": "your_email@example.com",
   "role": "user"/"admin"
 }
+
 ```
+
+
 
 - **Endpoint:** `/api/auth/login`
 - **Method:** `POST`
@@ -52,7 +55,11 @@ Welcome to the Awesome API! This API provides various functionalities for managi
   "username": "your_username",
   "password": "your_password"
 }
+
 ```
+
+
+
 
 ## Table of Contents for courses
 
