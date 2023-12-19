@@ -1,7 +1,7 @@
 # Project-name:  Course-Review
 
 ## Project-type: DataBase and API Design follow Module Pattern
-## Live link:  https://course-review-nine.vercel.app/
+
 
 ## Technology use 
 - Node js
@@ -148,7 +148,6 @@ Welcome to the Awesome API! This API provides various functionalities for managi
 Query Parameters:
 - page: (?page=1) Specifies the page number for paginated results.
 - limit: (?limit=10) Sets the number of items per page.
-- sortOrder: (?sortOrder=desc) Determines the sorting order.
 - minPrice, maxPrice: (?minPrice=20.00&maxPrice=50.00) Filters results by a price range.
 - tags: (?tags=Programming) Filters results by the name of a specific tag.
 - startDate, endDate: (?startDate=2023-01-01&endDate=2023-12-31) Filters results by a date range.
@@ -231,11 +230,7 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 - **Method:** `GET`
 - **Access:** `Authenticated User`
   
-### Get the Best Course Based on Average Review
 
-- **Endpoint:** `/api/course/best`
-- **Method:** `GET`
-- The response includes details about the course, its average rating, and the total number of reviews
 
 
 
