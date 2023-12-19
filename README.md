@@ -143,6 +143,7 @@ Welcome to the Awesome API! This API provides various functionalities for managi
 
 - **Endpoint:** `/api/courses`
 - **Method:** `GET`
+- **Access:** `Authenticated User`
   
 Query Parameters:
 - page: (?page=1) Specifies the page number for paginated results.
@@ -163,7 +164,8 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 
 - **Endpoint:** `/api/course/:id`
 - **Method:** `GET`
-
+- **Access:** `Authenticated User`
+  
 
 ### Delete a Course
 
@@ -184,20 +186,33 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 - **Endpoint:** `/api/categories`
 - **Method:** `POST`
 - **Access:** `admin`
+- **Request Body:** (data formate like)
+  
+```json
+{
 
-- **Request Body:** (Provide details about the expected request body)
+     
+    "name": "Programming "
+
+
+}
+```
+
+
 
 ### Get All Categories
 
 - **Endpoint:** `/api/categories`
 - **Method:** `GET`
-
+- **Access:** `Authenticated User`
+  
 ### Create a Review
 
 - **Endpoint:** `/api/reviews`
 - **Method:** `POST`
 - **Request Body:** ( data formate like this)
-
+- **Access:** `Authenticated User`
+  
 
 ```json
 {
@@ -214,7 +229,8 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 
 - **Endpoint:** `/api/courses/:courseId/reviews`
 - **Method:** `GET`
-
+- **Access:** `Authenticated User`
+  
 ### Get the Best Course Based on Average Review
 
 - **Endpoint:** `/api/course/best`
