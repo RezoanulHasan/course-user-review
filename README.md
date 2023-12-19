@@ -1,4 +1,4 @@
-# Project-name:  Course Review
+# Project-name:  Course-Review
 
 ## Project-type: DataBase and API Design follow Module Pattern
 ## Live link:  https://course-review-nine.vercel.app/
@@ -8,7 +8,7 @@
 - Express js
 - Mongoose
 - typescript
-- JWT
+- JWT(validation)
 - bcrypt (validation)
 - Zod (validation)
 - eslint ( code formatting and quality checking )
@@ -46,7 +46,62 @@ Welcome to the Awesome API! This API provides various functionalities for managi
 
 - **Endpoint:** `/api/course`
 - **Method:** `POST`
-- **Request Body:** (Provide details about the expected request body)
+- **Access:** `admin`
+- **Request Body:* data formate like this *
+  
+```json
+{
+    "title": "Backend Development: Building Scalable and Robust Systems",
+    "instructor": "Prof. Alex Johnson",
+    "categoryId": "123456789012345678901234",
+    "price": 89.99,
+    "tags": [
+        {
+            "name": "Backend Development",
+            "isDeleted": false
+        },
+        {
+            "name": "Server-Side Programming",
+            "isDeleted": false
+        },
+        {
+            "name": "Database Management",
+            "isDeleted": false
+        }
+    ],
+    "topics": [
+        "Introduction to Backend Development",
+        "Server-Side Programming with Node.js",
+        "RESTful API Design Principles",
+        "Database Design and Management",
+        "Authentication and Authorization",
+        "Handling User Sessions and Cookies",
+        "Error Handling and Logging",
+        "Testing and Debugging in Backend Development",
+        "Performance Optimization and Caching",
+        "Security Best Practices for Backend Systems",
+        "Scalability and Load Balancing",
+        "Containerization with Docker for Backend Applications"
+    ],
+    "classDays": [
+        "Tuesday",
+        "Thursday",
+        "Saturday"
+    ],
+    "startDate": "2023-03-01",
+    "endDate": "2023-05-15",
+    "language": "English",
+    "provider": "Backend Dev Pro Institute",
+    "classTime": "18:30 - 20:30",
+    "details": {
+        "level": "Intermediate",
+        "description": "Join Prof. Alex Johnson in our Backend Development course and learn to build scalable and robust systems. Covering server-side programming with Node.js, RESTful API design, database management, and various aspects of backend development, this course is designed for intermediate-level developers. Classes are scheduled on Tuesdays, Thursdays, and Saturdays from 18:30 to 20:30, starting on March 1, 2023, and concluding on May 15, 2023. Gain the skills to create efficient and secure backend systems that power modern web applications."
+    }
+}
+
+   
+```
+
 
 ### Get Paginated and Filtered   all Courses
 
