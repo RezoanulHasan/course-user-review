@@ -168,6 +168,8 @@ export const deleteCourse = async (
 
 // ..............updateCourse.................
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// Import necessary types
 export const updateCourse = async (
   req: Request,
   res: Response,
@@ -177,8 +179,9 @@ export const updateCourse = async (
 
   try {
     // Fetch the existing course
+    // eslint-disable-next-line no-undef
+    // Fetch the existing course
     const existingCourse = await CourseModel.findById(courseId);
-
     if (!existingCourse) {
       return res.status(404).json({
         success: false,
@@ -187,46 +190,45 @@ export const updateCourse = async (
       });
     }
 
-    // Update primitive fields
-    if (req.body.price) {
-      existingCourse.price = req.body.price;
-    }
+    // Update all fields
+    for (const [key, value] of Object.entries(req.body)) {
+      // Handle tags separately
+      // Update tags
+      if (req.body.tags && req.body.tags.length > 0) {
+        req.body.tags.forEach((tag: any) => {
+          const existingTagIndex = existingCourse.tags.findIndex(
+            (t: { name: any }) => t.name === tag.name,
+          );
 
-    // Update non-primitive fields
-    if (req.body.details && req.body.details.level) {
-      existingCourse.details.level = req.body.details.level;
-    }
-
-    // Update tags
-    if (req.body.tags && req.body.tags.length > 0) {
-      req.body.tags.forEach((tag: any) => {
-        const existingTagIndex = existingCourse.tags.findIndex(
-          (t: { name: any }) => t.name === tag.name,
-        );
-
-        if (tag.isDeleted) {
-          // Delete the tag if isDeleted is true
-          if (existingTagIndex !== -1) {
-            existingCourse.tags.splice(existingTagIndex, 1);
-          }
-        } else {
-          // Update or add a new tag
-          if (existingTagIndex !== -1) {
-            // Update isDeleted for an existing tag
-            existingCourse.tags[existingTagIndex].isDeleted = tag.isDeleted;
+          if (tag.isDeleted) {
+            // Delete the tag if isDeleted is true
+            if (existingTagIndex !== -1) {
+              existingCourse.tags.splice(existingTagIndex, 1);
+            }
           } else {
-            // Add a new tag
-            existingCourse.tags.push({
-              name: tag.name,
-              isDeleted: tag.isDeleted,
-            });
+            // Update or add a new tag
+            if (existingTagIndex !== -1) {
+              // Update isDeleted for an existing tag
+              existingCourse.tags[existingTagIndex].isDeleted = tag.isDeleted;
+            } else {
+              // Add a new tag
+              existingCourse.tags.push({
+                name: tag.name,
+                isDeleted: tag.isDeleted,
+              });
+            }
           }
-        }
-      });
+        });
+      } else {
+        // Update other fields
+        (existingCourse as any)[key] = value;
+      }
     }
 
+    // Update all fields
+    Object.assign(existingCourse, req.body);
     // Save the updated course
-    const updatedCourse = await existingCourse.save();
+    const updatedCourse = await existingCourse?.save();
 
     return res.status(200).json({
       success: true,

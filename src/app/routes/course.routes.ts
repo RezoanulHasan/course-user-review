@@ -15,9 +15,9 @@ const router = express.Router();
 // Create courses
 router.post('/api/course', authenticateToken, isAdmin, createCourse);
 // get all  courses
-router.get('/api/courses', authenticateToken, getCourses);
+router.get('/api/courses', getCourses);
 // get single  courses  by id
-router.get('/api/course/:id', authenticateToken, getCourseById);
+router.get('/api/course/:id', getCourseById);
 // delete  courses  by id
 router.delete('/api/course/:id', authenticateToken, isAdmin, deleteCourse);
 // update  courses  by id

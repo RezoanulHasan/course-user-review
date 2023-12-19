@@ -22,7 +22,7 @@ export const authenticateToken = (
 
     const user = decodedToken as JwtPayload; // Assuming JwtPayload is the type of your decoded payload
 
-    // Now you have access to user data including the role
+    // Now  access to user data including the role
     req.body.user = user;
 
     // Check user's role and grant/deny access
