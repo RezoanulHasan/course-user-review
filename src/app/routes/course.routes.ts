@@ -6,10 +6,9 @@ import {
   getBestCourse,
   getCourseById,
   deleteCourse,
-  isAdmin,
 } from '../controllers/coursesController';
 
-import { authenticateToken } from '../middlewares/authMiddleware';
+import { authenticateToken, isAdmin } from '../middlewares/authMiddleware';
 
 const router = express.Router();
 // Create courses

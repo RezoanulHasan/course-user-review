@@ -69,7 +69,7 @@ export const register = async (
       {
         _id: newUser._id,
         username: newUser.username,
-        email,
+        email: newUser.email,
         role: newUser.role,
       },
       config.SECRET_KEY as string,

@@ -38,3 +38,13 @@ export const authenticateToken = (
     }
   });
 };
+// Middleware to check if the user is an admin
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const isAdmin = (req: Request, res: Response, next: Function): void => {
+  const userRole = req.body.user?.role;
+  if (userRole === 'admin') {
+    next();
+  } else {
+    res.status(403).json({ message: 'Access denied. Admin rights required.' });
+  }
+};
