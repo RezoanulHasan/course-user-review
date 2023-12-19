@@ -33,6 +33,8 @@ export const CategorySchema = z.object({
 });
 
 export const ReviewSchema = z.object({
+  userId: z.string(),
+  username: z.string(),
   courseId: z.string(),
   rating: z.number(),
   review: z.string(),

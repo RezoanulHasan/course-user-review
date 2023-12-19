@@ -20,31 +20,44 @@ export const authenticateToken = (
       return res.status(403).json({ message: 'Invalid token.' });
     }
 
-    const user = decodedToken as JwtPayload; // Assuming JwtPayload is the type of your decoded payload
+    const user = decodedToken as JwtPayload;
 
-    // Now  access to user data including the role
+    // Now access to user data including the role
     req.body.user = user;
 
-    // Check user's role and grant/deny access
-    const { role } = user;
-    if (role === 'admin') {
-      // User is an admin, allow access
-      next();
-    } else {
-      // User is not an admin, deny access
-      res
-        .status(403)
-        .json({ message: 'Access denied. Admin rights required.' });
-    }
+    // Continue with the next middleware
+    next();
   });
 };
+
 // Middleware to check if the user is an admin
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const isAdmin = (req: Request, res: Response, next: Function): void => {
+export const isAdmin = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): void => {
   const userRole = req.body.user?.role;
+
   if (userRole === 'admin') {
     next();
   } else {
     res.status(403).json({ message: 'Access denied. Admin rights required.' });
+  }
+};
+
+// Middleware to check if the user is a regular user (non-admin)
+export const isUser = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): void => {
+  const userRole = req.body.user?.role;
+
+  if (userRole && userRole !== 'admin') {
+    next();
+  } else {
+    res
+      .status(403)
+      .json({ message: 'Access denied. Regular user rights required.' });
   }
 };
