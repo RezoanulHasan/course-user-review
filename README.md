@@ -50,26 +50,30 @@ Welcome to the Awesome API! This API provides various functionalities for managi
 - **Method:** `POST`
 - **Request Body:** data formate like this *
 
-  ```json
+
+
+```json
+
 {
   "username": "your_username",
   "password": "your_password"
 }
 
+
 ```
-
-
 
 ## Table of Contents for courses
 
    - [Endpoints](#endpoints)
   - [Create a Course](#create-a-course)
   - [Get Paginated and Filtered Courses](#get-paginated-and-filtered-courses)
+  - [Get  single Courses by ID](#get-single-course-by-id)
   - [Create a Category](#create-a-category)
+  - [Delete a Course](#delete-a-course)
+  - [Update a Course](#update-a-course)
   - [Get All Categories](#get-all-categories)
   - [Create a Review](#create-a-review)
-  - [Update a Course](#update-a-course)
-  - [Get Course by ID with Reviews](#get-course-by-id-with-reviews)
+ - [Get Course by ID with Reviews](#get-course-by-id-with-reviews)
   - [Get the Best Course Based on Average Review](#get-the-best-course-based-on-average-review)
 
 ## Endpoints
@@ -154,6 +158,25 @@ Query Parameters:
 - sortBy: Specifies the field by which the results should be sorted.
 Only applicable to the following fields: title, price, startDate, endDate, language, duration. Example: ?sortBy=startDate
 
+
+### Get  single Courses by ID
+
+- **Endpoint:** `/api/course/:id`
+- **Method:** `GET`
+
+
+### Delete a Course
+
+- **Endpoint:** `/api/courses/:courseId`
+- **Method:** `delete`
+- **Access:** `admin`
+
+### Update a Course
+
+- **Endpoint:** `/api/courses/:courseId`
+- **Method:** `PUT`
+- - **Access:** `admin`
+- Updating Both Primitive and Non-Primitive Data
 
 
 ### Create a Category
