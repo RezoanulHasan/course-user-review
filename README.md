@@ -26,7 +26,6 @@
 
 Welcome to the Awesome API! This API provides various functionalities for managing courses, categories, and reviews.
 
-## Video link API and Server testing:  https://drive.google.com/file/d/1-VQG2VEjblih9zFWECU5i5Ud3Q8cwJFn/view?usp=sharing
 
 
 ## Table of Contents for  users
@@ -50,13 +49,13 @@ Welcome to the Awesome API! This API provides various functionalities for managi
 - **Method:** `POST`
 - **Request Body:** data formate like this *
 
-  
-```json
+  ```json
 {
   "username": "your_username",
   "password": "your_password"
 }
 ```
+
 ## Table of Contents for courses
 
 - [Endpoints](#endpoints)
