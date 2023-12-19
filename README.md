@@ -167,13 +167,13 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 
 ### Delete a Course
 
-- **Endpoint:** `/api/courses/:courseId`
+- **Endpoint:** `/api/course/:courseId`
 - **Method:** `delete`
 - **Access:** `admin`
 
 ### Update a Course
 
-- **Endpoint:** `/api/courses/:courseId`
+- **Endpoint:** `/api/course/:courseId`
 - **Method:** `PUT`
 - - **Access:** `admin`
 - Updating Both Primitive and Non-Primitive Data
@@ -183,7 +183,7 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 
 - **Endpoint:** `/api/categories`
 - **Method:** `POST`
-- - **Access:** `admin`
+- **Access:** `admin`
 
 - **Request Body:** (Provide details about the expected request body)
 
@@ -196,14 +196,15 @@ Only applicable to the following fields: title, price, startDate, endDate, langu
 
 - **Endpoint:** `/api/reviews`
 - **Method:** `POST`
-- **Request Body:** (Provide details about the expected request body)
-
-### Update a Course
-
-- **Endpoint:** `/api/courses/:courseId`
-- **Method:** `PUT`
-- **Request Body:** (Provide details about the expected request body)
-- Updating Both Primitive and Non-Primitive Data
+- **Request Body:** ( data formate like this)
+- 
+```json
+{
+    "courseId": "65813a53180f68175c75ed65",
+    "rating": 4,
+    "review": "Great course!"
+}
+```
 
 ### Get Course by ID with Reviews
 
