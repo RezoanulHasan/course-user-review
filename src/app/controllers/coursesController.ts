@@ -10,14 +10,6 @@ import {
 
 // Middleware to check if the user is an admin
 // eslint-disable-next-line @typescript-eslint/ban-types
-export const isAdmin = (req: Request, res: Response, next: Function): void => {
-  const userRole = req.body.user?.role;
-  if (userRole === 'admin') {
-    next();
-  } else {
-    res.status(403).json({ message: 'Access denied. Admin rights required.' });
-  }
-};
 
 //............create-courses........................
 
@@ -236,85 +228,6 @@ export const updateCourse = async (
       message: 'Course updated successfully',
       data: updatedCourse,
     });
-  } catch (error) {
-    // Pass any errors to the error handler middleware
-    next(error);
-  }
-};
-
-//-----------------getBestCourse........................
-
-export const getBestCourse = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
-  try {
-    // Retrieve courses with their average ratings and review counts
-    const coursesWithStats = await CourseModel.aggregate([
-      {
-        $lookup: {
-          from: 'reviews', // Assuming the collection name for reviews is 'reviews'
-          localField: '_id',
-          foreignField: 'courseId',
-          as: 'reviews',
-        },
-      },
-      {
-        $addFields: {
-          averageRating: { $avg: '$reviews.rating' },
-          reviewCount: { $size: '$reviews' },
-        },
-      },
-      {
-        $sort: {
-          averageRating: -1, // Sort in descending order by average rating
-        },
-      },
-      {
-        $limit: 1, // Get the top course
-      },
-    ]);
-
-    if (coursesWithStats.length === 0) {
-      return res.status(404).json({
-        success: false,
-        statusCode: 404,
-        message: 'No courses found',
-      });
-    }
-
-    const bestCourse = coursesWithStats[0];
-
-    // Create the response object
-    const response = {
-      success: true,
-      statusCode: 200,
-      message: 'Best course retrieved successfully',
-      data: {
-        course: {
-          _id: bestCourse._id,
-          title: bestCourse.title,
-          instructor: bestCourse.instructor,
-          categoryId: bestCourse.categoryId,
-          price: bestCourse.price,
-          tags: bestCourse.tags,
-          startDate: bestCourse.startDate,
-          endDate: bestCourse.endDate,
-          language: bestCourse.language,
-          provider: bestCourse.provider,
-          durationInWeeks: bestCourse.durationInWeeks,
-          details: bestCourse.details,
-          topics: bestCourse.topics,
-          classDays: bestCourse.classDays,
-          classTime: bestCourse.classTime,
-        },
-        averageRating: bestCourse.averageRating,
-        reviewCount: bestCourse.reviewCount,
-      },
-    };
-
-    return res.status(200).json(response);
   } catch (error) {
     // Pass any errors to the error handler middleware
     next(error);

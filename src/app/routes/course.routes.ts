@@ -3,7 +3,6 @@ import {
   createCourse,
   getCourses,
   updateCourse,
-  getBestCourse,
   getCourseById,
   deleteCourse,
 } from '../controllers/coursesController';
@@ -25,6 +24,5 @@ router.get('/api/course/:id', authenticateToken, isUser, getCourseById);
 router.delete('/api/course/:id', authenticateToken, isAdmin, deleteCourse);
 // update  courses  by id
 router.put('/api/course/:courseId', authenticateToken, isAdmin, updateCourse);
-// get best course
-router.get('/api/course/best', authenticateToken, isUser, getBestCourse);
+
 export default router;
